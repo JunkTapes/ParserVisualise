@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="Pane" fx:id="Pane" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventHandler">
+   <children>
+      <TextArea id="InputTextArea" fx:id="InputTextArea" layoutX="29.0" layoutY="14.0" prefHeight="200.0" prefWidth="443.0" promptText="Введите текст" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
+      <Button id="StartButton" fx:id="StartButton" layoutX="203.0" layoutY="236.0" mnemonicParsing="false" onAction="#OnButtonPress" prefHeight="25.0" prefWidth="95.0" text="Button">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
