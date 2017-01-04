@@ -3,16 +3,13 @@ import javafx.fxml.FXML;
 import application.MyApp;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
 import application.SentenceLoader;
 
 public class EventHandler {
 	private MyApp Interface;
 	
 	public EventHandler(){}
-	
-	//@FXML
-	//private HBox hbox;
 	@FXML
 	private Button StartButton;
 	@FXML
@@ -28,9 +25,10 @@ public class EventHandler {
 		InputTextArea.setLayoutX(120);
 		StartButton.setLayoutX(10); 
 		StartButton.setLayoutY(10);
-		HBox hbox = addHBox();
-		Pane.getChildren().add(hbox);
-		LoadSentence(InputTextArea,hbox);
+		GridPane gridPane = addGridPane();
+		Pane.getChildren().add(gridPane);
+
+		LoadSentence(InputTextArea,gridPane);
 		
 		/*if((words[0].getLayoutX()+words[1].getLayoutX())<70){
 			Pane.setPrefWidth((Pane.getWidth()+((70-(words[0].getLayoutX()+words[1].getLayoutX()))*NumberOfWords)));
@@ -38,19 +36,18 @@ public class EventHandler {
 		
 	}
 	
-	public HBox addHBox() {
-	    HBox hbox = new HBox(10);
+	public GridPane addGridPane() {
+	    GridPane grid = new GridPane();
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setLayoutY(100);
+	    grid.setLayoutX(10);
 	    
-	    hbox.setLayoutX(10);
-		hbox.setLayoutY(100);
-	    hbox.setSpacing(10);
-	    //hbox.setStyle("-fx-background-color: #336699;");
-	    hbox.setPrefWidth(Pane.getWidth());
-	    hbox.setPrefHeight(Pane.getHeight());
-	    return hbox;
+	    return grid;
 	}
 	
-	private void LoadSentence(TextArea inputTextArea2, HBox hbox) {
+	//ƒанные всегда правильные, их провер€ть не нужно
+	private void LoadSentence(TextArea inputTextArea2, GridPane gridPane) {
 		String input = inputTextArea2.getText();
 		String[] splited = input.split("\\s+");
 		String[] justwords= new String[(splited.length/3 )+ 1];
@@ -80,18 +77,19 @@ public class EventHandler {
 		for (int i = 0; i <= justwords.length-1; i++) {
 			 words[i] = new Label();
 			 edges[i] = new Label();
-			
 			 words[i].setText(justwords[i]);
-
 			 edges[i].setText(justedges[i]);
 			}
 		
-		//hbox.getChildren().addAll(words);
+		gridPane.addRow(1, words);
+		gridPane.addRow(2, edges);
+//		hbox.getChildren().addAll(words);
+//		hboxedges.setLayoutY(120);
+//		hboxedges.getChildren().addAll(edges);
+		
 		
 		for(int i=0;i<justwords.length;i++)
 		{	
-			hbox.getChildren().add(words[i]);
-			//hbox.getChildren().add
 			System.out.println(justwords[i]);
 		}
 				
