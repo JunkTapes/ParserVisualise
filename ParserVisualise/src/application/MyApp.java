@@ -26,8 +26,6 @@ public class MyApp extends Application {
 			primaryStage.show();
 			
 			EventHandler controller = loader.getController();
-
-			
 			controller.setMainApp(this);
 			
 		} catch(Exception e) {
