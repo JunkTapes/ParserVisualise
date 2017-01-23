@@ -4,6 +4,7 @@ import java.util.*;
 import javafx.geometry.Bounds;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.*;
 
@@ -37,7 +38,7 @@ public class SentenceLoader {
 		
 	}
 
-	static void LoadSentence(TextArea inputTextArea2, GridPane gridPane,AnchorPane Pane) {
+	static void LoadSentence(TextArea inputTextArea2, GridPane gridPane) {
 		GetSentenceToArrayList(inputTextArea2);
 		gridPane.getChildren().clear();
 		Label[] labelTokens = new Label[tokens.size()];
@@ -51,37 +52,6 @@ public class SentenceLoader {
 			}
 		gridPane.addRow(1, labelTokens);
 		gridPane.addRow(2, labelEdges);
-
-		//Cant reach coordinates of children of gridPane, or labels
-		Bounds boundsInScene = gridPane.getChildren().get(1).localToScene(gridPane.getChildren().get(1).getBoundsInLocal());
-		System.out.println(boundsInScene);
-		System.out.println(gridPane.getChildren());
-		System.out.println(gridPane.localToScene(labelTokens[1].getLayoutX(), labelTokens[1].getLayoutY()));	
-		System.out.println(gridPane.getLayoutX());	
-		System.out.println(gridPane.getLayoutY());	
-		System.out.println(gridPane.getChildren().get(1).getLayoutX());
-		System.out.println(gridPane.getChildren().get(1).getLayoutY());
-		
-//		int i=0;
-//		 	//labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutX();
-//			// (-10) should be level dependent!
-//		
-//			line.setStartX(labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutX());
-//			line.setStartY(labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutY());
-//			line.setEndX(labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutX());
-//			line.setEndY((labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutY())-10);
-//			
-//			line2.setStartX(labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutX());
-//			line2.setStartY((labelTokens[Integer.parseInt((fromDependency.get(i)))].getLayoutY())-10);
-//			line2.setEndX(labelTokens[i].getLayoutX());
-//			line2.setEndY((labelTokens[i].getLayoutY())-10);
-//			
-//			line3.setStartX(labelTokens[i].getLayoutX());
-//			line3.setStartY(labelTokens[i].getLayoutY());
-//			line3.setEndX(labelTokens[i].getLayoutX());
-//			line3.setEndY((labelTokens[i].getLayoutY())-10);
-		
-		
 	}
 
 		
