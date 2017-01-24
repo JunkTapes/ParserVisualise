@@ -28,7 +28,6 @@ public class EventHandler {
 
 	@FXML
 	public void OnButtonPress() {
-		
 		InputTextArea.setPrefHeight(50);
 		InputTextArea.setLayoutX(300);
 		InputTextArea.setPrefWidth(Pane.getWidth() - 300);
@@ -42,8 +41,8 @@ public class EventHandler {
 		gridPane.setLayoutY(150);
 		gridPane.setLayoutX(20);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
-		gridPane.setMinWidth(Pane.getWidth()-150);
-		
+		gridPane.setMinWidth(Pane.getWidth() - 150);
+
 		SentenceLoader.LoadSentence(InputTextArea, gridPane);
 
 	}
@@ -51,31 +50,32 @@ public class EventHandler {
 	@FXML
 	public void OnDependencyButtonPress() {
 		System.out.println(gridPane.getChildren());
-		//to redraw lines and label on the button press i need some sort of a collection or a pane where i will be drawing them
+		// to redraw lines and label on the button press i need some sort of a
+		// collection or a pane where i will be drawing them
 		for (int i = 0; i < (gridPane.getChildren().size()) / 2; i++) {
 			System.out.println(gridPane.getChildren().get(i).localToScene(
 					gridPane.getChildren().get(i).getLayoutBounds().getMinX(),
 					gridPane.getChildren().get(i).getLayoutBounds().getMinY()));
-			double startMinX= gridPane.getChildren().get(i).getLayoutBounds().getMinX();
-			double startMinY= gridPane.getChildren().get(i).getLayoutBounds().getMinY();
-			double getXofStart = gridPane.getChildren().get(i).localToScene(startMinX,startMinY).getX();
-			double getYofStart = gridPane.getChildren().get(i).localToScene(startMinX,startMinY).getY();
+			double startMinX = gridPane.getChildren().get(i).getLayoutBounds().getMinX();
+			double startMinY = gridPane.getChildren().get(i).getLayoutBounds().getMinY();
+			double getXofStart = gridPane.getChildren().get(i).localToScene(startMinX, startMinY).getX();
+			double getYofStart = gridPane.getChildren().get(i).localToScene(startMinX, startMinY).getY();
 			int dependency = Integer.parseInt((SentenceLoader.fromDependency.get(i)));
-			double endMinX= gridPane.getChildren().get(dependency).getLayoutBounds().getMinX();
-			double endMinY= gridPane.getChildren().get(dependency).getLayoutBounds().getMinY();
-			double getXofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getX();
-			double getYofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getY();
-			
-			addline(getXofEnd+(7*i), getYofEnd, getXofEnd+(7*i), getYofEnd-10-(13*i), false, Pane);
-			addline(getXofEnd+(7*i),getYofEnd-10-(13*i),getXofStart+(7*i),getYofStart-10-(13*i),false,Pane);
-			addline(getXofStart+(7*i),getYofStart-10-(13*i),getXofStart+(7*i),getYofStart,true,Pane);
+			double endMinX = gridPane.getChildren().get(dependency).getLayoutBounds().getMinX();
+			double endMinY = gridPane.getChildren().get(dependency).getLayoutBounds().getMinY();
+			double getXofEnd = gridPane.getChildren().get(dependency).localToScene(endMinX, endMinY).getX();
+			double getYofEnd = gridPane.getChildren().get(dependency).localToScene(endMinX, endMinY).getY();
+
+			addline(getXofEnd + (7 * i), getYofEnd, getXofEnd + (7 * i), getYofEnd - 10 - (13 * i), false, Pane);
+			addline(getXofEnd + (7 * i), getYofEnd - 10 - (13 * i), getXofStart + (7 * i), getYofStart - 10 - (13 * i),
+					false, Pane);
+			addline(getXofStart + (7 * i), getYofStart - 10 - (13 * i), getXofStart + (7 * i), getYofStart, true, Pane);
 			Label Dep = new Label();
 			Dep.setText(SentenceLoader.dependencies.get(i));
 			Pane.getChildren().add(Dep);
-			Dep.setLayoutX(getXofStart+((getXofEnd-getXofStart)/2));
-			Dep.setLayoutY(getYofEnd-10-(13*i));
+			Dep.setLayoutX(getXofStart + ((getXofEnd - getXofStart) / 2));
+			Dep.setLayoutY(getYofEnd - 10 - (13 * i));
 		}
-
 
 	}
 
