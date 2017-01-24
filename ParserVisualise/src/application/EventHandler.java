@@ -2,15 +2,10 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-
-import com.sun.javafx.geom.Point2D;
-
 import application.MyApp;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.shape.Line;
 import application.SentenceLoader;
 
@@ -33,17 +28,22 @@ public class EventHandler {
 
 	@FXML
 	public void OnButtonPress() {
+		
 		InputTextArea.setPrefHeight(50);
-		InputTextArea.setPrefWidth(Pane.getWidth() - 150);
-		InputTextArea.setLayoutX(120);
+		InputTextArea.setLayoutX(300);
+		InputTextArea.setPrefWidth(Pane.getWidth() - 300);
+		DependencyButton.setVisible(true);
+		DependencyButton.setLayoutX(150);
+		DependencyButton.setLayoutY(10);
 		StartButton.setLayoutX(10);
 		StartButton.setLayoutY(10);
 		gridPane.setHgap(20);
 		gridPane.setVgap(20);
-		gridPane.setLayoutY(100);
+		gridPane.setLayoutY(150);
 		gridPane.setLayoutX(20);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
 		gridPane.setMinWidth(Pane.getWidth()-150);
+		
 		SentenceLoader.LoadSentence(InputTextArea, gridPane);
 
 	}
@@ -51,7 +51,7 @@ public class EventHandler {
 	@FXML
 	public void OnDependencyButtonPress() {
 		System.out.println(gridPane.getChildren());
-		
+		//to redraw lines and label on the button press i need some sort of a collection or a pane where i will be drawing them
 		for (int i = 0; i < (gridPane.getChildren().size()) / 2; i++) {
 			System.out.println(gridPane.getChildren().get(i).localToScene(
 					gridPane.getChildren().get(i).getLayoutBounds().getMinX(),
@@ -66,10 +66,14 @@ public class EventHandler {
 			double getXofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getX();
 			double getYofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getY();
 			
-			addline(getXofEnd+(7*i), getYofEnd, getXofEnd+(7*i), getYofEnd-10-(10*i), false, Pane);
-			addline(getXofEnd+(7*i),getYofEnd-10-(10*i),getXofStart+(7*i),getYofStart-10-(10*i),false,Pane);
-			addline(getXofStart+(7*i),getYofStart-10-(10*i),getXofStart+(7*i),getYofStart,true,Pane);
-			
+			addline(getXofEnd+(7*i), getYofEnd, getXofEnd+(7*i), getYofEnd-10-(13*i), false, Pane);
+			addline(getXofEnd+(7*i),getYofEnd-10-(13*i),getXofStart+(7*i),getYofStart-10-(13*i),false,Pane);
+			addline(getXofStart+(7*i),getYofStart-10-(13*i),getXofStart+(7*i),getYofStart,true,Pane);
+			Label Dep = new Label();
+			Dep.setText(SentenceLoader.dependencies.get(i));
+			Pane.getChildren().add(Dep);
+			Dep.setLayoutX(getXofStart+((getXofEnd-getXofStart)/2));
+			Dep.setLayoutY(getYofEnd-10-(13*i));
 		}
 
 

@@ -12,7 +12,7 @@
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Button id="StartButton" fx:id="StartButton" layoutX="203.0" layoutY="236.0" mnemonicParsing="false" onAction="#OnButtonPress" prefHeight="25.0" prefWidth="95.0" text="Button">
+      <Button id="StartButton" fx:id="StartButton" layoutX="189.0" layoutY="236.0" mnemonicParsing="false" onAction="#OnButtonPress" prefHeight="37.0" prefWidth="124.0" text="DrawToken">
          <font>
             <Font size="16.0" />
          </font></Button>
@@ -27,6 +27,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Button fx:id="DependencyButton" layoutX="331.0" layoutY="236.0" mnemonicParsing="false" onAction="#OnDependencyButtonPress" prefHeight="37.0" prefWidth="95.0" text="Button" />
+      <Button fx:id="DependencyButton" layoutX="331.0" layoutY="236.0" mnemonicParsing="false" onAction="#OnDependencyButtonPress" prefHeight="37.0" prefWidth="137.0" text="Draw Dependencies" visible="false" />
    </children>
 </AnchorPane>

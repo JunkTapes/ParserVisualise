@@ -2,6 +2,7 @@ package application;
 import java.util.*;
 
 import javafx.geometry.Bounds;
+import javafx.geometry.HPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -53,6 +54,7 @@ public class SentenceLoader {
 			}
 		gridPane.addRow(1, labelTokens);
 		gridPane.addRow(2, labelEdges);
+		
 		
 		for (int j = 0; j < tokens.size(); j++) {
 		    ColumnConstraints cc = new ColumnConstraints();
