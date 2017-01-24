@@ -43,6 +43,7 @@ public class EventHandler {
 		gridPane.setLayoutY(100);
 		gridPane.setLayoutX(20);
 		gridPane.setPadding(new Insets(25, 25, 25, 25));
+		gridPane.setMinWidth(Pane.getWidth()-150);
 		SentenceLoader.LoadSentence(InputTextArea, gridPane);
 
 	}
@@ -65,9 +66,10 @@ public class EventHandler {
 			double getXofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getX();
 			double getYofEnd= gridPane.getChildren().get(dependency).localToScene(endMinX,endMinY).getY();
 			
-			addline(getXofEnd+(5*i), getYofEnd, getXofEnd+(5*i), getYofEnd-10-(5*i), false, Pane);
-			addline(getXofEnd+(5*i),getYofEnd-10-(5*i),getXofStart+(5*i),getYofStart-10-(5*i),false,Pane);
-			addline(getXofStart+(5*i),getYofStart-10-(5*i),getXofStart+(5*i),getYofStart,true,Pane);
+			addline(getXofEnd+(7*i), getYofEnd, getXofEnd+(7*i), getYofEnd-10-(10*i), false, Pane);
+			addline(getXofEnd+(7*i),getYofEnd-10-(10*i),getXofStart+(7*i),getYofStart-10-(10*i),false,Pane);
+			addline(getXofStart+(7*i),getYofStart-10-(10*i),getXofStart+(7*i),getYofStart,true,Pane);
+			
 		}
 
 

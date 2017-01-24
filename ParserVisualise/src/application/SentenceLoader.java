@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.shape.*;
 
 public class SentenceLoader {
@@ -52,6 +53,12 @@ public class SentenceLoader {
 			}
 		gridPane.addRow(1, labelTokens);
 		gridPane.addRow(2, labelEdges);
+		
+		for (int j = 0; j < tokens.size(); j++) {
+		    ColumnConstraints cc = new ColumnConstraints();
+		    cc.setHgrow(Priority.ALWAYS);
+		    gridPane.getColumnConstraints().add(cc);
+		}
 	}
 
 		
